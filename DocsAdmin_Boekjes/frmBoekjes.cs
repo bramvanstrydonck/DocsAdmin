@@ -11,12 +11,15 @@ using System.Windows.Forms;
 using DocsAdmin_Boekjes.Data;
 using DocsAdmin_Boekjes.Helper;
 using System.Globalization;
+using System.IO;
+using System.Reflection;
 
 namespace DocsAdmin_Boekjes
 {
     public partial class frmBoekjes : Form
     {
         //Private fields
+        private string _tempPrintFilePath;
         private double _currentSelectedInputPrice;
         private BookInput _currentSelectedBookInput;
         private List<double> _controlePriceList;
@@ -38,6 +41,8 @@ namespace DocsAdmin_Boekjes
             //Generate field values
             _controlePriceList = new List<double>();
             _controleQuantityList = new List<int>();
+            _tempPrintFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\TempPrintFile.txt";
+
 
             //Generate the remaining controls
             GeneratePricingButtons();
@@ -97,6 +102,13 @@ namespace DocsAdmin_Boekjes
                 return true;
             }
 
+            //Check for ctrl + P --> Print current book
+            if (keyData == (Keys.Control | Keys.P))
+            {
+                PrintCurrentBook();
+                return true;
+            }
+
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -138,7 +150,7 @@ namespace DocsAdmin_Boekjes
             {
                 //Get new bookNr
                 InitBookNrValueAccordingToXml();
-                
+
                 //Clear current sheets
                 lbSheets.Items.Clear();
 
@@ -155,7 +167,7 @@ namespace DocsAdmin_Boekjes
 
                 //Clear huidig blaadje count
                 lblCurrentSheet.Text = "";
-                
+
                 //EnableDisable controls
                 EnableDisableControls();
 
@@ -184,7 +196,8 @@ namespace DocsAdmin_Boekjes
                 //Logic to execute when enter is pressed
                 SearchIfBookAlreadyExistsInXml();
                 txtCustomPrice.Focus();
-            }else if (e.KeyChar != '\b' && !IsTextBoxPressedKeyNumeric(e.KeyChar.ToString()))
+            }
+            else if (e.KeyChar != '\b' && !IsTextBoxPressedKeyNumeric(e.KeyChar.ToString()))
             {
                 //No numeric value entered!
                 MessageBox.Show("Enkel numerieke waarden toegestaan.", "Waarschuwing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -216,7 +229,7 @@ namespace DocsAdmin_Boekjes
                 //EnableDisable
                 EnableDisableControls();
             }
-            
+
         }
 
         private bool IsTextBoxPressedKeyNumeric(string valueToTest)
@@ -372,7 +385,7 @@ namespace DocsAdmin_Boekjes
         {
             //Parse the custom InputPrice
             var input = txtCustomPrice.Text.Replace('.', ',');
-            
+
             if (double.TryParse(input, out _currentSelectedInputPrice))
             {
                 //Add default 1 times the price
@@ -719,6 +732,50 @@ namespace DocsAdmin_Boekjes
 
             //Set txtTotal
             txtTotalByDate.Text = "€ " + total.ToString("0.00");
+        }
+
+        #endregion
+
+        #region Print Logic
+
+        private void btnPrintCurrentBook_Click(object sender, EventArgs e)
+        {
+            //Call print method
+            PrintCurrentBook();
+        }
+
+        private void PrintCurrentBook()
+        {
+            //Write current book to temp PrintFile
+            //Just a normal textfile
+            WriteBookToTempPrintFile();
+
+            //Print the TempPrintFile
+            System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo(_tempPrintFilePath);
+            psi.Verb = "PRINT";
+
+            System.Diagnostics.Process.Start(psi);
+        }
+
+        private void WriteBookToTempPrintFile()
+        {
+            //Create writer
+            using (var writer = new StreamWriter(_tempPrintFilePath))
+            {
+                //Write the bookNr
+                writer.WriteLine("Boekje " + txtBookNr.Text);
+                writer.WriteLine();
+
+                //Write each sheetValue
+                foreach (BookInput sheet in lbSheets.Items)
+                    writer.WriteLine(sheet.ToString());
+
+                //Write dashes to seperate total
+                writer.WriteLine("----------");
+
+                //Write total
+                writer.Write(txtTotalInputs.Text);
+            }
         }
 
         #endregion

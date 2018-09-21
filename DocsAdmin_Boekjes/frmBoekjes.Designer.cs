@@ -34,6 +34,7 @@
             this.txtTotalInputs = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNewBook = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbBook = new System.Windows.Forms.GroupBox();
@@ -47,7 +48,6 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.txtSheetDetail = new System.Windows.Forms.TextBox();
             this.gbInput = new System.Windows.Forms.GroupBox();
-            this.dtpInputDate = new System.Windows.Forms.DateTimePicker();
             this.gbQuantity = new System.Windows.Forms.GroupBox();
             this.btnSeven = new System.Windows.Forms.Button();
             this.btnThree = new System.Windows.Forms.Button();
@@ -62,6 +62,7 @@
             this.btnAddCustomPrice = new System.Windows.Forms.Button();
             this.txtCustomPrice = new System.Windows.Forms.TextBox();
             this.flowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.dtpInputDate = new System.Windows.Forms.DateTimePicker();
             this.gbControle = new System.Windows.Forms.GroupBox();
             this.btnControleVorige = new System.Windows.Forms.Button();
             this.btnControleNext = new System.Windows.Forms.Button();
@@ -76,8 +77,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sslXmlFilePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.sslStatusLabelNumberOfBooks = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnNewBook = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnPrintCurrentBook = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.gbBook.SuspendLayout();
             this.gbSheetDetails.SuspendLayout();
@@ -147,22 +148,30 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnNewBook,
             this.SaveToolStripMenuItem,
-            this.SaveAsToolStripMenuItem});
+            this.SaveAsToolStripMenuItem,
+            this.btnPrintCurrentBook});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // btnNewBook
+            // 
+            this.btnNewBook.Name = "btnNewBook";
+            this.btnNewBook.Size = new System.Drawing.Size(271, 26);
+            this.btnNewBook.Text = "Nieuw boekje (ctrl + n)";
+            this.btnNewBook.Click += new System.EventHandler(this.btnNewBook_Click);
+            // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
             this.SaveToolStripMenuItem.Text = "Save (ctrl + s)";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
             this.SaveAsToolStripMenuItem.Text = "Save as..";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
@@ -284,16 +293,6 @@
             this.gbInput.TabIndex = 7;
             this.gbInput.TabStop = false;
             this.gbInput.Text = "Input";
-            // 
-            // dtpInputDate
-            // 
-            this.dtpInputDate.CustomFormat = "";
-            this.dtpInputDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpInputDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInputDate.Location = new System.Drawing.Point(522, 28);
-            this.dtpInputDate.Name = "dtpInputDate";
-            this.dtpInputDate.Size = new System.Drawing.Size(191, 30);
-            this.dtpInputDate.TabIndex = 10;
             // 
             // gbQuantity
             // 
@@ -452,6 +451,16 @@
             this.flowLayout.Size = new System.Drawing.Size(292, 283);
             this.flowLayout.TabIndex = 0;
             // 
+            // dtpInputDate
+            // 
+            this.dtpInputDate.CustomFormat = "";
+            this.dtpInputDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpInputDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInputDate.Location = new System.Drawing.Point(522, 28);
+            this.dtpInputDate.Name = "dtpInputDate";
+            this.dtpInputDate.Size = new System.Drawing.Size(191, 30);
+            this.dtpInputDate.TabIndex = 10;
+            // 
             // gbControle
             // 
             this.gbControle.Controls.Add(this.btnControleVorige);
@@ -593,13 +602,6 @@
             this.sslStatusLabelNumberOfBooks.Text = "statusLabel";
             this.sslStatusLabelNumberOfBooks.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnNewBook
-            // 
-            this.btnNewBook.Name = "btnNewBook";
-            this.btnNewBook.Size = new System.Drawing.Size(236, 26);
-            this.btnNewBook.Text = "Nieuw boekje (ctrl + n)";
-            this.btnNewBook.Click += new System.EventHandler(this.btnNewBook_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -609,6 +611,13 @@
             this.label2.Size = new System.Drawing.Size(199, 25);
             this.label2.TabIndex = 13;
             this.label2.Text = "Datum nieuw blaadje:";
+            // 
+            // btnPrintCurrentBook
+            // 
+            this.btnPrintCurrentBook.Name = "btnPrintCurrentBook";
+            this.btnPrintCurrentBook.Size = new System.Drawing.Size(271, 26);
+            this.btnPrintCurrentBook.Text = "Print huidig boekje (ctrl + p)";
+            this.btnPrintCurrentBook.Click += new System.EventHandler(this.btnPrintCurrentBook_Click);
             // 
             // frmBoekjes
             // 
@@ -708,6 +717,7 @@
         private System.Windows.Forms.ToolStripStatusLabel sslStatusLabelNumberOfBooks;
         private System.Windows.Forms.ToolStripMenuItem btnNewBook;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem btnPrintCurrentBook;
     }
 }
 
