@@ -139,6 +139,7 @@ namespace DocsAdmin_Boekjes
                 //Get new bookNr
                 InitBookNrValueAccordingToXml();
 
+
                 //Clear current sheets
                 lbSheets.Items.Clear();
 
