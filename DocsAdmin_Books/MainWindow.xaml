@@ -1,0 +1,39 @@
+﻿<Window x:Class="DocsAdmin_Books.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DocsAdmin_Books"
+        mc:Ignorable="d"
+        Title="Boekjes" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Title -->
+        <Label x:Name="lblBookNr" Padding="5" Grid.Column="0" Grid.Row="0" FontSize="18" FontWeight="Light" HorizontalAlignment="Left" VerticalAlignment="Center">Boekje nummer:</Label>
+        <TextBox x:Name="txtBookNr" Margin="5" Grid.Column="1" Grid.Row="0" FontSize="18" FontWeight="Light" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+
+        <!-- Left column -->
+        <DockPanel Grid.Row="1" Grid.Column="0" Margin="2">
+            <ListBox x:Name="lbBookInputs" DockPanel.Dock="Top" MinHeight="250" VerticalAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding }" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBox x:Name="txtlbBookInputsTotal" DockPanel.Dock="Bottom" MaxHeight="75" />
+        </DockPanel>
+
+
+    </Grid>
+</Window>
