@@ -79,6 +79,9 @@
             this.sslStatusLabelNumberOfBooks = new System.Windows.Forms.ToolStripStatusLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPrintCurrentBook = new System.Windows.Forms.ToolStripMenuItem();
+            this.cboBookNrs = new System.Windows.Forms.ComboBox();
+            this.gbNavigation = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gbBook.SuspendLayout();
             this.gbSheetDetails.SuspendLayout();
@@ -88,6 +91,7 @@
             this.gbControle.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.gbNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblBookNumber
@@ -470,7 +474,7 @@
             this.gbControle.Controls.Add(this.txtControlQuantity);
             this.gbControle.Location = new System.Drawing.Point(318, 456);
             this.gbControle.Name = "gbControle";
-            this.gbControle.Size = new System.Drawing.Size(310, 134);
+            this.gbControle.Size = new System.Drawing.Size(310, 118);
             this.gbControle.TabIndex = 8;
             this.gbControle.TabStop = false;
             this.gbControle.Text = "Controle";
@@ -478,7 +482,7 @@
             // btnControleVorige
             // 
             this.btnControleVorige.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnControleVorige.Location = new System.Drawing.Point(12, 87);
+            this.btnControleVorige.Location = new System.Drawing.Point(12, 72);
             this.btnControleVorige.Name = "btnControleVorige";
             this.btnControleVorige.Size = new System.Drawing.Size(124, 35);
             this.btnControleVorige.TabIndex = 14;
@@ -489,7 +493,7 @@
             // btnControleNext
             // 
             this.btnControleNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnControleNext.Location = new System.Drawing.Point(164, 87);
+            this.btnControleNext.Location = new System.Drawing.Point(164, 72);
             this.btnControleNext.Name = "btnControleNext";
             this.btnControleNext.Size = new System.Drawing.Size(140, 35);
             this.btnControleNext.TabIndex = 12;
@@ -500,17 +504,17 @@
             // txtControlPrice
             // 
             this.txtControlPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtControlPrice.Location = new System.Drawing.Point(142, 36);
+            this.txtControlPrice.Location = new System.Drawing.Point(164, 36);
             this.txtControlPrice.Name = "txtControlPrice";
             this.txtControlPrice.ReadOnly = true;
-            this.txtControlPrice.Size = new System.Drawing.Size(162, 30);
+            this.txtControlPrice.Size = new System.Drawing.Size(140, 30);
             this.txtControlPrice.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(86, 41);
+            this.label1.Location = new System.Drawing.Point(98, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 25);
             this.label1.TabIndex = 9;
@@ -550,7 +554,7 @@
             this.groupBox1.Controls.Add(this.dtpTotalByDateFilter);
             this.groupBox1.Location = new System.Drawing.Point(634, 456);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(310, 134);
+            this.groupBox1.Size = new System.Drawing.Size(310, 118);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Totaal per datum";
@@ -558,7 +562,7 @@
             // txtTotalByDate
             // 
             this.txtTotalByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalByDate.Location = new System.Drawing.Point(6, 82);
+            this.txtTotalByDate.Location = new System.Drawing.Point(6, 67);
             this.txtTotalByDate.Multiline = true;
             this.txtTotalByDate.Name = "txtTotalByDate";
             this.txtTotalByDate.ReadOnly = true;
@@ -619,11 +623,43 @@
             this.btnPrintCurrentBook.Text = "Print huidig boekje (ctrl + p)";
             this.btnPrintCurrentBook.Click += new System.EventHandler(this.btnPrintCurrentBook_Click);
             // 
+            // cboBookNrs
+            // 
+            this.cboBookNrs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboBookNrs.FormattingEnabled = true;
+            this.cboBookNrs.Location = new System.Drawing.Point(191, 16);
+            this.cboBookNrs.Name = "cboBookNrs";
+            this.cboBookNrs.Size = new System.Drawing.Size(113, 30);
+            this.cboBookNrs.TabIndex = 14;
+            this.cboBookNrs.SelectedIndexChanged += new System.EventHandler(this.CboBookNrs_SelectedIndexChanged);
+            // 
+            // gbNavigation
+            // 
+            this.gbNavigation.Controls.Add(this.label3);
+            this.gbNavigation.Controls.Add(this.cboBookNrs);
+            this.gbNavigation.Location = new System.Drawing.Point(634, 580);
+            this.gbNavigation.Name = "gbNavigation";
+            this.gbNavigation.Size = new System.Drawing.Size(310, 50);
+            this.gbNavigation.TabIndex = 15;
+            this.gbNavigation.TabStop = false;
+            this.gbNavigation.Text = "Navigatie";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 25);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Ga naar boekje nr:";
+            // 
             // frmBoekjes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(956, 659);
+            this.Controls.Add(this.gbNavigation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpInputDate);
             this.Controls.Add(this.statusStrip1);
@@ -660,6 +696,8 @@
             this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.gbNavigation.ResumeLayout(false);
+            this.gbNavigation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -718,6 +756,9 @@
         private System.Windows.Forms.ToolStripMenuItem btnNewBook;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem btnPrintCurrentBook;
+        private System.Windows.Forms.ComboBox cboBookNrs;
+        private System.Windows.Forms.GroupBox gbNavigation;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -26,6 +26,7 @@ namespace DocsAdmin_Boekjes
         private List<int> _controleQuantityList;
         private int _currentControleIndex = -1;
         private XmlExportHelper _xmlHelper;
+        private List<int> _allBookNrs;
 
 
         //Ctor
@@ -43,7 +44,6 @@ namespace DocsAdmin_Boekjes
             _controleQuantityList = new List<int>();
             _tempPrintFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\TempPrintFile.txt";
 
-
             //Generate the remaining controls
             GeneratePricingButtons();
 
@@ -55,6 +55,12 @@ namespace DocsAdmin_Boekjes
 
             //Init xml
             InitXmlHelper();
+
+            //Populate cboBookNrs
+            PopulateCboBookNumbers();
+
+            //Init inputscreen
+            InitialiseInputScreen(false);
 
             //Search xml
             InitBookNrValueAccordingToXml();
@@ -138,14 +144,21 @@ namespace DocsAdmin_Boekjes
             txtBookNr.ReadOnly = lbSheets.Items.Count > 0;
         }
 
+        
         #endregion
 
         #region Init logic
 
-        private void InitialiseInputScreen()
+        private void InitialiseInputScreen(bool showMsgBoxToConfirmInitialise = true)
         {
             //Unsaved progress will be lost. Continue?
-            var result = MessageBox.Show("U wilt een nieuw boekje starten. Alle niet opgeslaan gegevens zullen verloren gaan. Wilt u doorgaan?", "Nieuw boekje starten", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result;
+
+            if (showMsgBoxToConfirmInitialise)
+                result = MessageBox.Show("U wilt een nieuw boekje starten. Alle niet opgeslaan gegevens zullen verloren gaan. Wilt u doorgaan?", "Nieuw boekje starten", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            else
+                result = DialogResult.Yes;
+
             if (result == DialogResult.Yes)
             {
                 //Get new bookNr
@@ -247,6 +260,45 @@ namespace DocsAdmin_Boekjes
             txtBookNr.Text = _xmlHelper.RetrieveNexToAddBookNr().ToString();
         }
 
+        private void PopulateCboBookNumbers()
+        {
+            //Get all bookNrs from excel
+            _allBookNrs = _xmlHelper.RetrieveAllBookNumbers();
+
+            //Store new sheet input date
+            var tempNewSheetDate = dtpInputDate.Value;
+
+            //Set itemssource
+            cboBookNrs.DataSource = _allBookNrs;
+
+            //Set autocomplete source
+            var autoCompleteSource = new AutoCompleteStringCollection();
+            foreach (var bookNr in _allBookNrs)
+                autoCompleteSource.Add(bookNr.ToString());
+            
+            cboBookNrs.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cboBookNrs.AutoCompleteMode = AutoCompleteMode.Append;
+            cboBookNrs.AutoCompleteCustomSource = autoCompleteSource;
+
+            //Set selectedIndex on the lastitem
+            cboBookNrs.SelectedIndex = cboBookNrs.Items.Count - 1;
+
+            //Reset the inputDate
+            //Necassary as it gets reset after setting datasource
+            dtpInputDate.Value = tempNewSheetDate;
+        }
+
+        private void CboBookNrs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Init inputscreen
+            InitialiseInputScreen(false);
+
+            //Set txtBookNr to selecteditem 
+            txtBookNr.Text = cboBookNrs.SelectedItem.ToString();
+
+            //Retrieve the book with the selected nr from xml
+            SearchIfBookAlreadyExistsInXml();
+        }
 
         #endregion
 
@@ -653,6 +705,9 @@ namespace DocsAdmin_Boekjes
 
             //Update totalByDate
             GetTotalValueByDate();
+
+            //Update cboBookNrs
+            PopulateCboBookNumbers();
         }
 
         private string PrepareForSavingToXml(bool isSaveAsAction)
@@ -779,6 +834,7 @@ namespace DocsAdmin_Boekjes
         }
 
         #endregion
+
 
     }
 }

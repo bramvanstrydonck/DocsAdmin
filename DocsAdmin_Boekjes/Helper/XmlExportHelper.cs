@@ -25,7 +25,6 @@ namespace DocsAdmin_Boekjes.Helper
             get { return _xmlDoc.Root.Descendants("Book").Count(); }
         }
 
-
         //Ctor
         public XmlExportHelper(string filePath)
         {
@@ -240,6 +239,30 @@ namespace DocsAdmin_Boekjes.Helper
 
             //Return result
             return result;
+        }
+
+        public List<int> RetrieveAllBookNumbers()
+        {
+            //Create resultList
+            var allBookNumbers = new List<int>();
+
+            //Get all bookElements
+            var bookElements = _xmlDoc.Root.Descendants("Book");
+
+            //Get bookNr from each element
+            foreach (var book in bookElements)
+            {
+                //Try parse the value of the number attribute
+                int tempBookNr;
+                var parseResult = int.TryParse(book.Attribute(XName.Get("number")).Value, out tempBookNr);
+
+                //Add parsed value to the list
+                if (parseResult)
+                    allBookNumbers.Add(tempBookNr);
+            }
+
+            //Return result
+            return allBookNumbers;
         }
 
         #endregion
