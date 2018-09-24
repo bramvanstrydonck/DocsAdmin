@@ -50,9 +50,7 @@ namespace DocsAdmin_Boekjes
             //Set eventhandlers for the quantityButtons
             SetQuantityButtonsEventHandlers();
 
-            //Enable and disable controls
-            EnableDisableControls();
-
+            
             //Init xml
             InitXmlHelper();
 
@@ -67,6 +65,9 @@ namespace DocsAdmin_Boekjes
 
             //Get total by date
             GetTotalValueByDate();
+
+            //Enable and disable controls
+            EnableDisableControls();
 
             //Focus on the bookNr
             txtBookNr.Focus();
@@ -142,6 +143,9 @@ namespace DocsAdmin_Boekjes
 
             //Set bookNr text readonly if there's already an input
             txtBookNr.ReadOnly = lbSheets.Items.Count > 0;
+
+            //Export to excel must be disabled if no bookNrs are detected
+            btnExportToExcelToolStripMenuItem.Enabled = _allBookNrs.Count > 0;
         }
 
         
@@ -482,6 +486,10 @@ namespace DocsAdmin_Boekjes
 
             //EnableDisable Controls
             EnableDisableControls();
+
+            //Select the last item in the listbox
+            lbSheets.SelectedIndex = lbSheets.Items.Count - 1;
+
         }
 
         private void CalculateTotalBook()
@@ -831,6 +839,18 @@ namespace DocsAdmin_Boekjes
                 //Write total
                 writer.Write(txtTotalInputs.Text);
             }
+        }
+
+
+        #endregion
+
+        #region Excel logic
+
+        private void ExportToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Show the new form
+            var frmExcelExport = new frmExcelExport(_allBookNrs, _xmlHelper);
+            frmExcelExport.ShowDialog();
         }
 
         #endregion

@@ -37,6 +37,8 @@
             this.btnNewBook = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPrintCurrentBook = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbBook = new System.Windows.Forms.GroupBox();
             this.gbSheetDetails = new System.Windows.Forms.GroupBox();
             this.lblDetailsTarief = new System.Windows.Forms.Label();
@@ -78,7 +80,6 @@
             this.sslXmlFilePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.sslStatusLabelNumberOfBooks = new System.Windows.Forms.ToolStripStatusLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnPrintCurrentBook = new System.Windows.Forms.ToolStripMenuItem();
             this.cboBookNrs = new System.Windows.Forms.ComboBox();
             this.gbNavigation = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -153,7 +154,8 @@
             this.btnNewBook,
             this.SaveToolStripMenuItem,
             this.SaveAsToolStripMenuItem,
-            this.btnPrintCurrentBook});
+            this.btnPrintCurrentBook,
+            this.btnExportToExcelToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -178,6 +180,20 @@
             this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
             this.SaveAsToolStripMenuItem.Text = "Save as..";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+            // 
+            // btnPrintCurrentBook
+            // 
+            this.btnPrintCurrentBook.Name = "btnPrintCurrentBook";
+            this.btnPrintCurrentBook.Size = new System.Drawing.Size(271, 26);
+            this.btnPrintCurrentBook.Text = "Print huidig boekje (ctrl + p)";
+            this.btnPrintCurrentBook.Click += new System.EventHandler(this.btnPrintCurrentBook_Click);
+            // 
+            // btnExportToExcelToolStripMenuItem
+            // 
+            this.btnExportToExcelToolStripMenuItem.Name = "btnExportToExcelToolStripMenuItem";
+            this.btnExportToExcelToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
+            this.btnExportToExcelToolStripMenuItem.Text = "Export to excel..";
+            this.btnExportToExcelToolStripMenuItem.Click += new System.EventHandler(this.ExportToExcelToolStripMenuItem_Click);
             // 
             // gbBook
             // 
@@ -616,13 +632,6 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Datum nieuw blaadje:";
             // 
-            // btnPrintCurrentBook
-            // 
-            this.btnPrintCurrentBook.Name = "btnPrintCurrentBook";
-            this.btnPrintCurrentBook.Size = new System.Drawing.Size(271, 26);
-            this.btnPrintCurrentBook.Text = "Print huidig boekje (ctrl + p)";
-            this.btnPrintCurrentBook.Click += new System.EventHandler(this.btnPrintCurrentBook_Click);
-            // 
             // cboBookNrs
             // 
             this.cboBookNrs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -759,6 +768,7 @@
         private System.Windows.Forms.ComboBox cboBookNrs;
         private System.Windows.Forms.GroupBox gbNavigation;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem btnExportToExcelToolStripMenuItem;
     }
 }
 
