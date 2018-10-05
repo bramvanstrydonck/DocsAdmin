@@ -83,6 +83,7 @@
             this.cboBookNrs = new System.Windows.Forms.ComboBox();
             this.gbNavigation = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtDateBooks = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.gbBook.SuspendLayout();
             this.gbSheetDetails.SuspendLayout();
@@ -566,31 +567,33 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDateBooks);
             this.groupBox1.Controls.Add(this.txtTotalByDate);
             this.groupBox1.Controls.Add(this.dtpTotalByDateFilter);
             this.groupBox1.Location = new System.Drawing.Point(634, 456);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(310, 118);
+            this.groupBox1.Size = new System.Drawing.Size(310, 174);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Totaal per datum";
             // 
             // txtTotalByDate
             // 
-            this.txtTotalByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalByDate.Location = new System.Drawing.Point(6, 67);
+            this.txtTotalByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalByDate.Location = new System.Drawing.Point(6, 80);
             this.txtTotalByDate.Multiline = true;
             this.txtTotalByDate.Name = "txtTotalByDate";
             this.txtTotalByDate.ReadOnly = true;
-            this.txtTotalByDate.Size = new System.Drawing.Size(298, 40);
+            this.txtTotalByDate.Size = new System.Drawing.Size(298, 54);
             this.txtTotalByDate.TabIndex = 4;
+            this.txtTotalByDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dtpTotalByDateFilter
             // 
             this.dtpTotalByDateFilter.CustomFormat = "";
             this.dtpTotalByDateFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTotalByDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTotalByDateFilter.Location = new System.Drawing.Point(6, 31);
+            this.dtpTotalByDateFilter.Location = new System.Drawing.Point(6, 36);
             this.dtpTotalByDateFilter.Name = "dtpTotalByDateFilter";
             this.dtpTotalByDateFilter.Size = new System.Drawing.Size(298, 30);
             this.dtpTotalByDateFilter.TabIndex = 11;
@@ -646,7 +649,7 @@
             // 
             this.gbNavigation.Controls.Add(this.label3);
             this.gbNavigation.Controls.Add(this.cboBookNrs);
-            this.gbNavigation.Location = new System.Drawing.Point(634, 580);
+            this.gbNavigation.Location = new System.Drawing.Point(318, 580);
             this.gbNavigation.Name = "gbNavigation";
             this.gbNavigation.Size = new System.Drawing.Size(310, 50);
             this.gbNavigation.TabIndex = 15;
@@ -662,6 +665,15 @@
             this.label3.Size = new System.Drawing.Size(173, 25);
             this.label3.TabIndex = 15;
             this.label3.Text = "Ga naar boekje nr:";
+            // 
+            // txtDateBooks
+            // 
+            this.txtDateBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDateBooks.Location = new System.Drawing.Point(6, 140);
+            this.txtDateBooks.Name = "txtDateBooks";
+            this.txtDateBooks.ReadOnly = true;
+            this.txtDateBooks.Size = new System.Drawing.Size(298, 28);
+            this.txtDateBooks.TabIndex = 12;
             // 
             // frmBoekjes
             // 
@@ -769,6 +781,7 @@
         private System.Windows.Forms.GroupBox gbNavigation;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem btnExportToExcelToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtDateBooks;
     }
 }
 

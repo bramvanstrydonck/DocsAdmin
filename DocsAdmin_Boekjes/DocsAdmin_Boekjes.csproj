@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Data\Book.cs" />
     <Compile Include="Data\BookInput.cs" />
+    <Compile Include="Data\TotalByDateObject.cs" />
     <Compile Include="frmBoekjes.cs">
       <SubType>Form</SubType>
     </Compile>

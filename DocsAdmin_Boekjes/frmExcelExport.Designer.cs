@@ -147,6 +147,7 @@
             this.MaximizeBox = false;
             this.Name = "frmExcelExport";
             this.Text = "Exporteer naar Excel";
+            this.Load += new System.EventHandler(this.frmExcelExport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

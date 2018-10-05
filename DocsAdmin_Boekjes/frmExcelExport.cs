@@ -56,6 +56,7 @@ namespace DocsAdmin_Boekjes
             if (InputValuesOk())
             {
                 //Set progressbar visible
+                btnExportToExcel.Enabled = false;
                 pbProgressBar.Visible = true;
 
                 //Export to excel
@@ -180,6 +181,10 @@ namespace DocsAdmin_Boekjes
         }
 
         #endregion
-        
+
+        private void frmExcelExport_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

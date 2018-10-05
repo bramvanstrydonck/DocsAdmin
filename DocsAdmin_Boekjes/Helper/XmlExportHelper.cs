@@ -143,10 +143,10 @@ namespace DocsAdmin_Boekjes.Helper
 
         #region Total by Date Logic
 
-        public double CalculateTotalByDate(DateTime filterDate)
+        public TotalByDateObject CalculateTotalByDate(DateTime filterDate)
         {
             //Init var
-            double total = 0;
+            var total = new TotalByDateObject();
 
             //Search all dateTags who correspond the filter
             //var dateElements = _xmlDoc.Root.Elements().Where(e => e.Name.Equals("Date") && filterDate.Date.Equals(DateTime.Parse(e.Value).Date));
@@ -160,7 +160,15 @@ namespace DocsAdmin_Boekjes.Helper
                 var valueElement = dateElement.Parent.Elements(XName.Get("Value")).FirstOrDefault();
 
                 //Retrieve the priceValue
-                total += double.Parse(valueElement.Value, CultureInfo.InvariantCulture);
+                total.Total += double.Parse(valueElement.Value, CultureInfo.InvariantCulture);
+
+                //Get bookNrValue
+                //Grandparent ;) --> Book/Sheet/Date
+                var bookNr = dateElement.Parent.Parent.Attribute(XName.Get("number")).Value;
+
+                //Add bookNr to list if neccesary
+                if(!total.BookNrs.Contains(bookNr))
+                    total.BookNrs.Add(bookNr);
             }
 
             //Return result

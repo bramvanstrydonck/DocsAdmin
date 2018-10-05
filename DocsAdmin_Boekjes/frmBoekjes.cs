@@ -794,7 +794,10 @@ namespace DocsAdmin_Boekjes
             var total = _xmlHelper.CalculateTotalByDate(dtpTotalByDateFilter.Value);
 
             //Set txtTotal
-            txtTotalByDate.Text = "€ " + total.ToString("0.00");
+            txtTotalByDate.Text = "€ " + total.Total.ToString("0.00");
+
+            //Set bookNrs. --> use ToStringmethod for that
+            txtDateBooks.Text = total.ToString();
         }
 
         #endregion
