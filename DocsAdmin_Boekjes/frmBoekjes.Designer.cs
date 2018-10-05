@@ -193,7 +193,7 @@
             // 
             this.btnExportToExcelToolStripMenuItem.Name = "btnExportToExcelToolStripMenuItem";
             this.btnExportToExcelToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
-            this.btnExportToExcelToolStripMenuItem.Text = "Export to excel..";
+            this.btnExportToExcelToolStripMenuItem.Text = "Export to excel.. (ctrl + e)";
             this.btnExportToExcelToolStripMenuItem.Click += new System.EventHandler(this.ExportToExcelToolStripMenuItem_Click);
             // 
             // gbBook

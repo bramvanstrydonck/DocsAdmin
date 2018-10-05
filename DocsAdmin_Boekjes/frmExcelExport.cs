@@ -137,33 +137,39 @@ namespace DocsAdmin_Boekjes
             //Init loop bookNrs
             for (int currentLoopBookNr = bookStart; currentLoopBookNr <= bookEnd; currentLoopBookNr++)
             {
-                //Retrieve the book from the excel
-                var book = _xmlHelper.RetrieveBookFromXmlByBookNr(currentLoopBookNr);
-
-                //Write bookNr // Second row is whitespace
-                worksheet.Cells[1, currentColumnIndex] = "Boekje " + currentLoopBookNr;
-
-                //Loop the bookInputs 
-                int bookInputRowIndex = 3;
-                double total = 0;
-                foreach (var bookInput in book)
+                //Only do if loopNr contains currentLoopBookNr
+                if (BookNrs.Contains(currentLoopBookNr))
                 {
-                    //Retrieve bookInput value
-                    worksheet.Cells[bookInputRowIndex, currentColumnIndex] = bookInput.ToString();
+                    //Retrieve the book from the excel
+                    var book = _xmlHelper.RetrieveBookFromXmlByBookNr(currentLoopBookNr);
 
-                    //Increment total
-                    total += bookInput.Value;
+                    //Write bookNr // Second row is whitespace
+                    worksheet.Cells[1, currentColumnIndex] = "Boekje " + currentLoopBookNr;
 
-                    //Increment rowIndex
+                    //Loop the bookInputs 
+                    int bookInputRowIndex = 3;
+                    double total = 0;
+                    foreach (var bookInput in book)
+                    {
+                        //Retrieve bookInput value
+                        worksheet.Cells[bookInputRowIndex, currentColumnIndex] = bookInput.ToString();
+
+                        //Increment total
+                        total += bookInput.Value;
+
+                        //Increment rowIndex
+                        bookInputRowIndex++;
+                    }
+
+                    //Write total
                     bookInputRowIndex++;
+                    worksheet.Cells[bookInputRowIndex, currentColumnIndex] = "€ " + total.ToString("0.00");
+
+                    //Increment current column index
+                    currentColumnIndex++;
                 }
 
-                //Write total
-                bookInputRowIndex++;
-                worksheet.Cells[bookInputRowIndex, currentColumnIndex] = "€ " + total.ToString("0.00");
-
-                //Increment current column index
-                currentColumnIndex++;
+                
             }
 
             //Save the excel file
@@ -177,6 +183,7 @@ namespace DocsAdmin_Boekjes
             System.Runtime.InteropServices.Marshal.ReleaseComObject(worksheet);
             System.Runtime.InteropServices.Marshal.ReleaseComObject(excelWorkbook);
             System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+
 
         }
 

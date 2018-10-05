@@ -50,7 +50,7 @@ namespace DocsAdmin_Boekjes
             //Set eventhandlers for the quantityButtons
             SetQuantityButtonsEventHandlers();
 
-            
+
             //Init xml
             InitXmlHelper();
 
@@ -116,6 +116,13 @@ namespace DocsAdmin_Boekjes
                 return true;
             }
 
+            //Check for ctrl + E --> Export to excel
+            if (keyData == (Keys.Control | Keys.E))
+            {
+                StartExportToExcelLogic();
+                return true;
+            }
+
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -148,7 +155,7 @@ namespace DocsAdmin_Boekjes
             btnExportToExcelToolStripMenuItem.Enabled = _allBookNrs.Count > 0;
         }
 
-        
+
         #endregion
 
         #region Init logic
@@ -279,7 +286,7 @@ namespace DocsAdmin_Boekjes
             var autoCompleteSource = new AutoCompleteStringCollection();
             foreach (var bookNr in _allBookNrs)
                 autoCompleteSource.Add(bookNr.ToString());
-            
+
             cboBookNrs.AutoCompleteSource = AutoCompleteSource.CustomSource;
             cboBookNrs.AutoCompleteMode = AutoCompleteMode.Append;
             cboBookNrs.AutoCompleteCustomSource = autoCompleteSource;
@@ -850,6 +857,11 @@ namespace DocsAdmin_Boekjes
         #region Excel logic
 
         private void ExportToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartExportToExcelLogic();
+        }
+
+        private void StartExportToExcelLogic()
         {
             //Show the new form
             var frmExcelExport = new frmExcelExport(_allBookNrs, _xmlHelper);
