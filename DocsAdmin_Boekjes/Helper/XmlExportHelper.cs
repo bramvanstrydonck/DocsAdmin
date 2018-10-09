@@ -231,6 +231,8 @@ namespace DocsAdmin_Boekjes.Helper
 
                     dateOk = DateTime.TryParse(sheetElement.Element(XName.Get("Date")).Value, out tempDate);
                     valueOk = double.TryParse(sheetElement.Element(XName.Get("Value")).Value.Replace('.', ','), out tempValue);
+                    //valueOk = double.TryParse(sheetElement.Element(XName.Get("Value")).Value, out tempValue);
+
 
                     //Only if both Date and Value are ok --> add to list
                     if (dateOk && valueOk)

@@ -570,7 +570,7 @@ namespace DocsAdmin_Boekjes
             var newBI = new BookInput()
             {
                 BookID = int.Parse(txtDetailBookNr.Text),
-                Value = double.Parse(txtSheetDetail.Text),
+                Value = double.Parse(txtSheetDetail.Text.Replace('.', ',')),
                 Date = dtpSheetDate.Value
             };
 

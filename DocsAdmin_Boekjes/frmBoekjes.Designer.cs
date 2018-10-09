@@ -74,6 +74,7 @@
             this.lblHuidigBlaadje = new System.Windows.Forms.Label();
             this.lblCurrentSheet = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDateBooks = new System.Windows.Forms.TextBox();
             this.txtTotalByDate = new System.Windows.Forms.TextBox();
             this.dtpTotalByDateFilter = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -83,7 +84,6 @@
             this.cboBookNrs = new System.Windows.Forms.ComboBox();
             this.gbNavigation = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDateBooks = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.gbBook.SuspendLayout();
             this.gbSheetDetails.SuspendLayout();
@@ -109,7 +109,7 @@
             // txtBookNr
             // 
             this.txtBookNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBookNr.Location = new System.Drawing.Point(167, 30);
+            this.txtBookNr.Location = new System.Drawing.Point(188, 30);
             this.txtBookNr.Name = "txtBookNr";
             this.txtBookNr.Size = new System.Drawing.Size(114, 30);
             this.txtBookNr.TabIndex = 1;
@@ -477,7 +477,7 @@
             this.dtpInputDate.CustomFormat = "";
             this.dtpInputDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpInputDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInputDate.Location = new System.Drawing.Point(522, 28);
+            this.dtpInputDate.Location = new System.Drawing.Point(566, 31);
             this.dtpInputDate.Name = "dtpInputDate";
             this.dtpInputDate.Size = new System.Drawing.Size(191, 30);
             this.dtpInputDate.TabIndex = 10;
@@ -577,6 +577,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Totaal per datum";
             // 
+            // txtDateBooks
+            // 
+            this.txtDateBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDateBooks.Location = new System.Drawing.Point(6, 140);
+            this.txtDateBooks.Name = "txtDateBooks";
+            this.txtDateBooks.ReadOnly = true;
+            this.txtDateBooks.Size = new System.Drawing.Size(298, 28);
+            this.txtDateBooks.TabIndex = 12;
+            // 
             // txtTotalByDate
             // 
             this.txtTotalByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -629,7 +638,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(319, 33);
+            this.label2.Location = new System.Drawing.Point(347, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(199, 25);
             this.label2.TabIndex = 13;
@@ -665,15 +674,6 @@
             this.label3.Size = new System.Drawing.Size(173, 25);
             this.label3.TabIndex = 15;
             this.label3.Text = "Ga naar boekje nr:";
-            // 
-            // txtDateBooks
-            // 
-            this.txtDateBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateBooks.Location = new System.Drawing.Point(6, 140);
-            this.txtDateBooks.Name = "txtDateBooks";
-            this.txtDateBooks.ReadOnly = true;
-            this.txtDateBooks.Size = new System.Drawing.Size(298, 28);
-            this.txtDateBooks.TabIndex = 12;
             // 
             // frmBoekjes
             // 
